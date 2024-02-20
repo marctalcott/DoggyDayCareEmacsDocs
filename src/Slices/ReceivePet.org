@@ -1,0 +1,56 @@
+#+title: Receive Pet
+
+SliceName: Receive Pet
+Trigger (WFE or UI): Admin UI
+API Verb: POST
+API Endpoint: api/v1/Reception/Pet
+Command Name: ReceivePet
+Command Handler Name: ReceivePetHandler
+Event Name: ReceivedPet
+ViewName Reservation:id
+
+** Diagram
+
+#+begin_src plantuml :file ReceivedPet.png
+@startuml
+'left to right direction
+'trigger
+rectangle "Admin UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Reception/Pet" as api
+rectangle "ReceivePet\nCommand\Handler" as cmd #add8e6
+rectangle "ReceivedPet\nEvent" as evt #eedd82
+rectangle  "ReservationView:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:ReceivedPet.png]]
+
+
+** Story:
+As a internal user
+I want to receive the pet that was delivered to the kennel
+
+
+- Dev:
+- Effort:
+- Status: Grooming
+
+** AC:
+- G: Reservation Existed
+- W: Pet arrives and is checked in by internal employee
+- T: ReceivedPet event exists
+- A: ReservationView:id is updated
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]

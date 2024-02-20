@@ -1,0 +1,56 @@
+#+title: Book A Room
+
+SliceName: Book A Room
+Trigger (WFE or UI): Book Room UI
+API Verb: POST
+API Endpoint: api/v1/Booking
+Command Name: BookRoom
+Command Handler Name: BookRoomHandler
+Event Name: BookedRoom
+ViewName Booking:id
+
+** Diagram
+
+#+begin_src plantuml :file BookedRoom.png
+@startuml
+'left to right direction
+'trigger
+rectangle "Book Room UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Booking" as api
+rectangle "BookRoom\nCommand\Handler" as cmd #add8e6
+rectangle "BookedRoom\nEvent" as evt #eedd82
+rectangle  "Booking:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:BookedRoom.png]]
+
+
+** Story:
+As a User
+I want to book a room
+
+
+- Dev:
+- Effort:
+- Status: TG
+
+** AC:
+- G: I want to book a room
+- W: I submit the page
+- T: The room gets booked
+- A:
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]

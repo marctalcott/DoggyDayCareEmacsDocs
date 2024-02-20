@@ -1,0 +1,52 @@
+#+title: Add Altercation
+*** SliceName: Add Altercation
+*** Trigger (WFE or UI): Employee UI
+*** API Verb: POST
+*** API Endpoint: api/v1/Altercation
+*** Command Name: AddAltercation
+*** Command Handler Name: AddAltercationHandler
+*** Event Name: AddedAltercation
+*** ViewName AltercationView:id
+
+** Diagram
+
+#+begin_src plantuml :file AddedAltercation.png
+@startuml
+'left to right direction
+'trigger
+rectangle "Employee UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Altercation" as api
+rectangle "AddAltercation\nCommand\Handler" as cmd #add8e6
+rectangle "AddedAltercation\nEvent" as evt #eedd82
+rectangle  "AltercationView:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+
+** Story:
+As a employe
+I want to record an altercation between pets
+
+
+- Dev:
+- Effort:
+- Status:
+
+** AC:
+- G: I want to record an altercation
+- W: api/v1/Altercation
+- T: AddAltercation command will execute the business logic.
+- A: AddedAltercation event will be saved.
+- A: AltercationView:id view will be updated with the relevant event information.
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]

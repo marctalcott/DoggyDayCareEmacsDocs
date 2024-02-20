@@ -1,0 +1,42 @@
+#+title: Book Reservation
+
+[[file:~/OrgMode-Inmar/OrgRoamRoot/001-Projects/DoggyDayCare/DoggyDaycare-MOC.org]]
+* Diagram
+
+#+begin_src plantuml :file BookedReservation.png
+@startuml
+'left to right direction
+'trigger
+rectangle "UI User books reservation" as trg  #D3D3D3
+rectangle "API\nPOST\nReservation" as api
+rectangle "BookReservation\nCommand\Handler" as cmd #add8e6
+rectangle "BookedReservation\nEvent" as evt #eedd82
+rectangle ReservationView as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:BookedReservation.png]]
+
+
+* Story:
+As a pet owner, I want to book a reservation for my pet at the Doggy Day Care place.
+
+- Dev: Diane
+- Effort: 3
+- Status: InDev
+
+* AC:
+- G: A user enters valid booking data
+- W: User submits form.
+- T: A 'BookedReservation' event occurs.
+- A: The 'ReservationView:id' exists.

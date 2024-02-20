@@ -1,0 +1,40 @@
+#+title: Doggy Daycare Moc
+
+* This is a MOC
+
+Example Project is for a Doggy Daycare.
+Who are the clients? the pets or the people?
+Pets are the clients. The have owners.
+
+** BookReservation
+[[file:Slices/BookReservation.org]]
+
+
+Owners book a reservation for a pet.
+
+** BookARoom (this books a specific room for the reservation)
+A room (kennel) is booked on behalf of the pet.
+[[file:Slices/BookARoom.org][BookARoom]]
+
+** SendConfirmationMessage
+A confirmation message is sent to the owner.
+[[file:Slices/SendConfirmation.org]]
+** CancelReservation
+Owner cancels reservation for pet.
+[[file:Slices/CancelReservation.org]]
+
+** ReceivePet
+Pet Arrives for reservation (Intake process).
+[[file:Slices/ReceivePet.org]]
+** AddCareInstructions
+Add Care-Instructions for reservation.
+[[file:Slices/AddCareInstructions.org]]
+** AddPersonalityNote
+Add Personality-Note for pet.
+[[file:Slices/AddPersonalityNote.org]]
+** AddCareEvent
+Add Care-Event for pet (fed the pet, walked the pet, gave medicine, etc., pet started fight with another guest, pet was attacked by another guest)
+[[file:Slices/AddCareEVent.org]]
+** AddAltercationEvent
+Add Altercation-Event (2 or more pets got into a skirmish).
+[[file:Slices/AddAltercation.org]]

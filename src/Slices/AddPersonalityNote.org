@@ -1,0 +1,57 @@
+#+title: Add Personality Note
+
+*** SliceName: Add a Personality Note
+*** Trigger (WFE or UI): User UI
+*** API Verb: POST
+*** API Endpoint: api/v1/Pet/PersonalityNote
+*** Command Name: AddPersonalityNote
+*** Command Handler Name: AddPersonalityNoteHandler
+*** Event Name: AddedPersonalityNote
+*** ViewName Petview:id
+
+** Diagram
+
+#+begin_src plantuml :file AddedPersonalityNote.png
+@startuml
+'left to right direction
+'trigger
+rectangle "User UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Pet/PersonalityNote" as api
+rectangle "AddPersonalityNote\nCommand\Handler" as cmd #add8e6
+rectangle "AddedPersonalityNote\nEvent" as evt #eedd82
+rectangle  "Petview:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:AddedPersonalityNote.png]]
+
+
+** Story:
+As a owner
+I want to add a personality note such as 'bites dogs' or 'allergy to grass'
+
+
+- Dev:
+- Effort:
+- Status:
+
+** AC:
+- G:
+- W: api/v1/Pet/PersonalityNote
+- T: AddPersonalityNote command will execute the business logic.
+- A: AddedPersonalityNote event will be saved.
+- A: Petview:id view will be updated with the relevant event information.
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]

@@ -1,0 +1,53 @@
+#+title: Cancel Reservation
+
+SliceName: CancelReservation
+Trigger (WFE or UI): UI
+API Verb: DELETE
+API Endpoint: api/vi/Reservation
+Command Name: CancelReservation
+Command Handler Name: CancelReservationHandler
+Event Name: CancelledReservation
+ViewName Reservation:id
+
+** Diagram
+
+#+begin_src plantuml :file CancelledReservation.png
+@startuml
+'left to right direction
+'trigger
+rectangle "UI" as trg  #D3D3D3
+rectangle "API\nDELETE\napi/vi/Reservation" as api
+rectangle "CancelReservation\nCommand\Handler" as cmd #add8e6
+rectangle "CancelledReservation\nEvent" as evt #eedd82
+rectangle  "Reservation:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+
+** Story:
+As a pet owner
+I want to cancel a reservation that I previously created
+
+
+- Dev:
+- Effort:
+- Status:
+
+** AC:
+- G:
+- W:
+- T:
+- A:
+
+
+** LinkToMOC
+
+[[file:../DoggyDaycare-MOC.org]]

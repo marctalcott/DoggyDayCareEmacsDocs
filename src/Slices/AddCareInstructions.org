@@ -1,0 +1,57 @@
+#+title: Add Care Instructions
+
+*** SliceName: Add Care Instructions
+*** Trigger (WFE or UI): Admin UI
+*** API Verb: POST
+*** API Endpoint: api/vi/Reservation/CareInstruction
+*** Command Name: AddCareInstruction
+*** Command Handler Name: AddCareInstructionHandler
+*** Event Name: AddedCareInstruction
+*** ViewName ResrvationView:id
+
+** Diagram
+
+#+begin_src plantuml :file AddedCareInstruction.png
+@startuml
+'left to right direction
+'trigger
+rectangle "Admin UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/vi/Reservation/CareInstruction" as api
+rectangle "AddCareInstruction\nCommand\Handler" as cmd #add8e6
+rectangle "AddedCareInstruction\nEvent" as evt #eedd82
+rectangle  "ResrvationView:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:AddedCareInstruction.png]]
+
+
+** Story:
+As a pet owner
+I want to add care instructions
+
+
+- Dev:
+- Effort:
+- Status:
+
+** AC:
+- G:
+- W: api/vi/Reservation/CareInstruction
+- T: AddCareInstruction command will execute the business logic.
+- A: AddedCareInstruction event will be saved.
+- A: ResrvationView:id view will be updated with the relevant event information.
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]

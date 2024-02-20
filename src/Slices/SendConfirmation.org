@@ -1,0 +1,56 @@
+#+title: Send Confirmation
+
+SliceName: Send Reservation Confirmation
+Trigger (WFE or UI): WFE
+API Verb: POST
+API Endpoint: api/v1/Notifications/ReservationConfirmation
+Command Name: SendReservationConfirmation
+Command Handler Name: SendReservationConfirmationHandler
+Event Name: SentReservationConfirmation
+ViewName ReservationConfirmationView:id
+
+** Diagram
+
+#+begin_src plantuml :file SentReservationConfirmation.png
+@startuml
+'left to right direction
+'trigger
+rectangle "WFE" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Notifications/ReservationConfirmation" as api
+rectangle "SendReservationConfirmation\nCommand\Handler" as cmd #add8e6
+rectangle "SentReservationConfirmation\nEvent" as evt #eedd82
+rectangle  "ReservationConfirmationView:id" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:SentReservationConfirmation.png]]
+
+
+** Story: 
+As a System
+I want to send a reservation confirmation to the pet owner after the reservation is booked
+
+
+- Dev:
+- Effort:
+- Status:
+
+** AC:
+- G:
+- W:
+- T:
+- A:
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]

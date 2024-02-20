@@ -1,0 +1,57 @@
+#+title: Add Care E Vent
+
+*** SliceName: Add Care Event
+*** Trigger (WFE or UI): UI
+*** API Verb: POST
+*** API Endpoint: api/v1/CareEvent
+*** Command Name: AddCareEvent
+*** Command Handler Name: AddCareEventHandler
+*** Event Name: AddedCareEvent
+*** ViewName CareEvent
+
+** Diagram
+
+#+begin_src plantuml :file AddedCareEvent.png
+@startuml
+'left to right direction
+'trigger
+rectangle "UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/CareEvent" as api
+rectangle "AddCareEvent\nCommand\Handler" as cmd #add8e6
+rectangle "AddedCareEvent\nEvent" as evt #eedd82
+rectangle  "CareEvent" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:AddedCareEvent.png]]
+
+
+** Story:
+As a employee
+I want to add a CareEvent
+
+
+- Dev:
+- Effort:
+- Status:
+
+** AC:
+- G: A pet needed care, and was given care
+- W: api/v1/CareEvent
+- T: AddCareEvent command will execute the business logic.
+- A: AddedCareEvent event will be saved.
+- A: CareEvent view will be updated with the relevant event information.
+
+
+** LinkToMOC
+[[file:../DoggyDaycare-MOC.org]]
