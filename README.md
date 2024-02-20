@@ -5,8 +5,11 @@ Doggy Day Care EventModel created in Emacs as an example of building an software
 This is an example of how to build documentation in Emacs.
 
 ## Browse the Project:
-   The root of the project os the MOC (map of content) file here: 
+   The root of the project os the MOC (map of content) file here:
+   
 [src/DoggyDaycare-MOC.org](src/DoggyDaycare-MOC.org)
+
+
 Click the links to move to the Slices. From the slices you can click a link at the bottomve of each to get back to the MOC.
 
 ## Purpose:
