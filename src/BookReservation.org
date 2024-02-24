@@ -1,0 +1,54 @@
+#+title: Book Reservation
+
+** Slice Info:
+- SliceName: Book Reservation
+- Trigger (WFE or UI): Pet owner books through UI
+- API Verb: POST
+- API Endpoint: api/v1/Reservation
+- Command Name: BookReservation
+- Command Handler Name: BookReservationHandler
+- Event Name: BookedReservation
+- ViewName Reservation
+
+- Dev: Sally
+- Effort: 5
+- Status: RFW
+
+** Story:
+As a pet owner
+I want to book a reservation for my pet
+
+** AC:
+- G: Pet owner wants to book a reservation using the UI
+- W: Pet owner books through UI
+- T: BookReservation command will execute the business logic.
+- A: BookedReservation event will be saved.
+- A: Reservation view will be updated with the relevant event information.
+
+
+** Diagram
+
+#+begin_src plantuml :file images/BookedReservation.png
+@startuml
+
+rectangle "Pet owner books through UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Reservation" as api
+rectangle "BookReservation\nCommand\Handler" as cmd #add8e6
+rectangle "BookedReservation\nEvent" as evt #eedd82
+rectangle  "Reservation" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+#+end_src
+
+#+RESULTS:
+
+[[file:images/BookedReservation.png]]
+
+** LinkToMOC
