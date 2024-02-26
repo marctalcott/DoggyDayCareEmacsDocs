@@ -8,8 +8,57 @@ Pets are the clients. The have owners.
 
 ** BookReservation
 [[file:Slices/BookReservation.org]]
+[[file:BookReservation.org]]
+
+** Slice Info:
+- SliceName: Book Reservation
+- Trigger (WFE or UI): User submits Book Reservation UI
+- API Verb: POST
+- API Endpoint: api/v1/Reservation/Booking
+- Command Name: BookReservation
+- Command Handler Name: BookReservationHandler
+- Event Name: BookedReservation
+- ViewName Reservation
+
+- Dev: Sally
+- Effort: 5
+- Status: RFW
+
+** Story:
+As a custoGmer
+I want to
+
+** AC:
+- G: Previous event or state
+- W: User submits Book Reservation UI
+- T: BookReservation command will execute the business logic.
+- A: BookedReservation event will be saved.
+- A: Reservation view will be updated with the relevant event information.
 
 
+** Diagram
+
+Enter # to complete diagram code+begin_src plantuml :file images/BookedReservation.png
+@startuml
+
+rectangle "User submits Book Reservation UI" as trg  #D3D3D3
+rectangle "API\nPOST\napi/v1/Reservation/Booking" as api
+rectangle "BookReservation\nCommand\Handler" as cmd #add8e6
+rectangle "BookedReservation\nEvent" as evt #eedd82
+rectangle  "Reservation" as v1 #98fb98
+
+trg -d-> api
+api -r-> cmd
+cmd -[hidden]r-> v1
+cmd -d-> evt
+evt .u. v1
+
+@enduml
+
+Enter # to complete diagram code+end_src
+
+** LinkToMOC
+Enter # to complete diagram code
 Owners book a reservation for a pet.
 
 ** BookARoom (this books a specific room for the reservation)
